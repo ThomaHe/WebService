@@ -18,7 +18,7 @@ class Fiche
 		$xml->formatOutput = true;
 
 	//Ajout doctype
-	 	$xml->schemaValidate("schema_pathos.xsd");
+	 	//$xml->schemaValidate("schema_pathos.xsd");
 		/*$xml->appendChild($doctype); */
 		
 	//Lien vers le XSL
