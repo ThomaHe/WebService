@@ -20,11 +20,31 @@ class Fiche
 		//var_dump($table);
 	}
 	
-	public function getListePatho(){
+	public function getPathosByMeridien($meridien)
+	{
+		include_once('modele/Model.php');
+		$model = new Model();
+		$table = $model->getPathosByMeridien($meridien);
+		var_dump($table);
+		return $table;
+
+	}
+	
+	public function displayListePatho(){
 		include_once('modele/Model.php');
 		$model = new Model();
 		$table = $model->getListPatho();
-		return $table;
+		echo '	<table>
+					<caption>Liste des pathologies et leur ID</caption>
+					<tr>
+						<th>ID</th>
+						<th>Nom de la pathologie</th>
+					</tr>';
+		foreach($table as $patho){
+			echo "<tr><td>$patho[idP]</td><td>$patho[desc]</td></tr>";
+			
+		}
+		echo '</table>';
 		//var_dump($table);
 	}
 
@@ -38,11 +58,7 @@ class Fiche
 		$xml->formatOutput = true;
 
 	//Ajout doctype
-
-
-	 	//$xml->schemaValidate("lib/schema_pathos.xsd");
-
-
+		//$xml->schemaValidate("lib/schema_pathos.xsd");
 		/*$xml->appendChild($doctype); */
 		
 	//Lien vers le XSL

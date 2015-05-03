@@ -7,22 +7,24 @@
 	$vue = new Fiche();
 	
 	if (isset($_GET['section']) && $_GET['section'] == 'id'){
-		//require('controleur/fiche.php');
-		//$vue = new Fiche();
 		$table = $vue->getPathoById($_GET['id']);
 		$vue->generateXML($table);
 	}
 	
 	else if (isset($_GET['section']) && $_GET['section'] == 'patho'){
-		//require('controleur/fiche.php');
-		//$vue = new Fiche();
 		$table = $vue->getPathoByName($_GET['nom']);
+		//var_dump($table);
+		$vue->generateXML($table);
+	}
+	
+	else if (isset($_GET['section']) && $_GET['section'] == 'meridien'){
+		$table = $vue->getPathosByMeridien($_GET['nom']);
 		var_dump($table);
 		$vue->generateXML($table);
 	}
 	
 	else{
-		$vue->getListePatho();
+		$vue->displayListePatho();
 	}
 
 	require('vue/footer.html');
