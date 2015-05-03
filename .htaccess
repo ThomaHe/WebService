@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule	^([a-z]+)$	?section=$1	[L] 
+RewriteRule ^([a-z]+)/([0-9]+)$ index.php?section=$1&id=$2 [L]

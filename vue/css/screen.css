@@ -1,0 +1,158 @@
+body{
+	margin: 0px;
+	width: 100%;
+	font-family: Verdana, Arial, sans-serif;
+	font-size:0.75em;
+}
+header{
+	margin: 0px;
+	width: 100%;
+}
+/******************************************************/
+/********** Navbar ************************************/
+/******************************************************/
+nav{
+	background: darkgrey;
+	text-align: center;
+	width : 100%;
+}
+nav ul{
+	border: none;
+	padding: 0;
+}
+
+nav ul li{
+	display: inline-block;
+	width: 20%;
+	margin: 0em;
+}
+nav ul li a{
+	display: inline-block;
+	text-decoration: none;
+	color: darkslategrey;
+	width: 100%;
+	height:100%;
+	line-height: 2em;
+	vertical-align: middle;
+}
+
+nav ul li a:hover{
+	background: white;
+}
+
+/******************************************************/
+/********** Contenu ************************************/
+/******************************************************/
+section{
+	display: block;
+	margin: 0px auto 0px auto;
+	width: 80%;
+	background: white;
+	padding: 1%;
+}
+
+h1{
+	text-align: center;
+	color: darkslategrey;
+	font-family: Verdana, Arial, sans-serif;
+}
+h2{
+	text-align: center;
+}
+
+
+article{
+	float: right;
+	width: 96%;
+	position: relative;
+	display:inline-block;
+	padding: 1%;
+	margin: 1%;
+	color: darkslategrey;
+	background-color: whitesmoke;
+}
+
+blockquote{
+	font-size: 1em;
+	font-style: italic;
+	font-family: Times, serif;
+	text-align: center;
+	color: dimgray;
+}
+table{
+	border-collapse : collapse;
+	margin : auto;
+}
+td{
+	border: 0.1em darkslategrey solid;
+}
+
+/******************************************************/
+/********** Formulaire Recherche **********************/
+/******************************************************/
+form ul li{
+	list-style: none;
+	display:inline-block;
+	width: 100%;
+	height: 1.5em;
+	margin-top: 1em;
+}
+form ul li label{
+	display:inline-block;
+	position: absolute;
+	left: 20%;
+}
+form ul li input,select{
+	display:inline-block;
+	position: absolute;
+	right: 20%;
+}
+input.validerButton{
+	margin: auto;
+}
+/******************************************************/
+/********** Footer ************************************/
+/******************************************************/
+footer{
+	clear:both;
+}
+/******************************************************/
+/********** Phone et tablettes ************************/
+/******************************************************/
+
+@media screen and (max-width: 730px) {
+
+nav ul li{
+	display: inline;
+	width: 20%;
+	height : 100%;
+	margin: 0em;
+}
+section{
+	display: block;
+	margin: 0px auto 0px auto;
+	width: 96%;
+	background: white;
+	padding: 1%;
+}
+table{
+	font-size : 80%;
+}
+form ul li{
+	list-style: none;
+	display:block;
+	width: 100%;
+	height: 1.5em;
+	margin-top: 2em;
+}
+form ul li label{
+	display:block;
+	position: relative;
+	left: 4%;
+}
+form ul li input,select{
+	display:block;
+	position: relative;
+	right: 4%;
+}
+}
