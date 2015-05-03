@@ -48,7 +48,7 @@ class Fiche
 		//var_dump($table);
 	}
 
-	public function generateXML($table)
+	public function generateXMLMultiples($table)
 	{
 	//création d'un nouveau document
 		$xml = new DOMDocument( "1.0", "UTF-8" );
@@ -62,7 +62,7 @@ class Fiche
 		/*$xml->appendChild($doctype); */
 		
 	//Lien vers le XSL
-		$xslt = $xml->createProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="lib/patho.xsl"');
+		$xslt = $xml->createProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="lib/pathologies.xsl"');
 		$xml->appendChild($xslt);
 		
 	//Ajoute des elements 
@@ -96,5 +96,47 @@ class Fiche
 		exit();
 	}
 	
+	public function generateXML($table)
+	{
+	//création d'un nouveau document
+		$xml = new DOMDocument( "1.0", "UTF-8" );
+		
+	//Indentation
+		$xml->preserveWhiteSpace = false;
+		$xml->formatOutput = true;
+
+	//Ajout doctype
+		//$xml->schemaValidate("lib/schema_pathos.xsd");
+		/*$xml->appendChild($doctype); */
+		
+	//Lien vers le XSL
+		$xslt = $xml->createProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="lib/pathologie.xsl"');
+		$xml->appendChild($xslt);
+		
+	//Ajoute des elements 
+			//Ajout de l'element racine
+			$patho = $xml->createElement('pathologie');
+			//Element Description
+			$desc = $xml->createElement('description',$table[0]['Description']);
+			$patho->appendChild($desc);
+			
+			$meridien = $xml->createElement('meridien',$table[0]['Meridien']);
+			$patho->appendChild($meridien);
+			
+			$sympts = $xml->createElement('symptomes');
+			
+			//var_dump($tablePatho);
+			
+				foreach($table as $tableSympt){
+					$sympt = $xml->createElement('symptome',$tableSympt['Symptome']);
+					$sympts->appendChild($sympt);
+				}
+			$patho->appendChild($sympts);
+			$xml->appendChild($patho);
+			
+		$xml->save('patho'.$table[0]['idP'].'.xml');
+		header('Location: ../patho'.$table[0]['idP'].'.xml');
+		exit();
+	}
 	
 }
