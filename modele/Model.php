@@ -14,7 +14,20 @@
 	    public function getBdd(){
 			return $this->bdd;
 	    }
-	    
+	    		
+		public function getListPatho(){
+			$listPathos ='';
+			try {
+				$requete = $this->bdd
+				->query('SELECT p.desc,p.idP FROM patho p;');
+
+			} catch(PDOException $ex) {
+				echo "An Error occured!"; //user friendly message
+			}
+			$listPathos = $requete->fetchAll(PDO::FETCH_ASSOC);
+			return $listPathos;
+	    }
+		
 		public function getPathoById($id){
 			 $donnees = '';
 			try {
@@ -71,16 +84,5 @@
 			}
 			return $donnees;
 	    }
-		
-		public function getListPatho(){
-			try {
-				$requete = $this->bdd
-				->query('SELECT p.desc,p.idP FROM patho p;');
 
-			} catch(PDOException $ex) {
-				echo "An Error occured!"; //user friendly message
-			}
-			$listPathos = $requete->fetchAll(PDO::FETCH_ASSOC);
-			return $listPathos;
-	    }
 	}	

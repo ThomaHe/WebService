@@ -20,16 +20,14 @@ class Fiche
 		//var_dump($table);
 	}
 	
-	function getListePatho()
-	{
+	public function getListePatho(){
 		include_once('modele/Model.php');
 		$model = new Model();
-		$table = $model->getListePatho();
+		$table = $model->getListPatho();
 		return $table;
-		var_dump($table);
+		//var_dump($table);
 	}
-	
-	
+
 	public function generateXML($table)
 	{
 	//création d'un nouveau document
