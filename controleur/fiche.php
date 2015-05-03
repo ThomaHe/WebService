@@ -20,7 +20,7 @@ class Fiche
 	//Ajout doctype
 
 
-	 	//$xml->schemaValidate("schema_pathos.xsd");
+	 	//$xml->schemaValidate("lib/schema_pathos.xsd");
 
 
 		/*$xml->appendChild($doctype); */
