@@ -2,14 +2,26 @@
 
 class Fiche
 {
-	public function execute($id)
+	public function getPathoById($id)
 	{
 		include_once('modele/Model.php');
-		$model = new Model('Pathologies');
+		$model = new Model();
 		$table = $model->getPathoById($id);
-
+		return $table;
 		//var_dump($table);
+	}
 	
+	public function getPathoByName($name)
+	{
+		include_once('modele/Model.php');
+		$model = new Model();
+		$table = $model->getPathoByName($name);
+		return $table;
+		//var_dump($table);
+	}
+	
+	public function generateXML($table)
+	{
 	//création d'un nouveau document
 		$xml = new DOMDocument( "1.0", "UTF-8" );
 		
@@ -47,8 +59,10 @@ class Fiche
 		$patho->appendChild($sympts);
 		
 		$xml->appendChild($patho);
-		$xml->save('patho'.$id.'.xml');
-		header('Location: ../patho'.$id.'.xml');
+		$xml->save('patho'.$table[0]['idP'].'.xml');
+		header('Location: ../patho'.$table[0]['idP'].'.xml');
 		exit();
 	}
+	
+	
 }
