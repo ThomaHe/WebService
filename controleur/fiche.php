@@ -18,11 +18,11 @@ class Fiche
 		$xml->formatOutput = true;
 
 	//Ajout doctype
-	 	$xml->schemaValidate("schema_pathos.xsd");
+	 	$xml->schemaValidate("lib/schema_pathos.xsd");
 		/*$xml->appendChild($doctype); */
 		
 	//Lien vers le XSL
-		$xslt = $xml->createProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="patho.xsl"');
+		$xslt = $xml->createProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="lib/patho.xsl"');
 		$xml->appendChild($xslt);
 		
 	//Ajoute des elements 
