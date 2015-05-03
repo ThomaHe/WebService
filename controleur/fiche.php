@@ -25,7 +25,7 @@ class Fiche
 		include_once('modele/Model.php');
 		$model = new Model();
 		$table = $model->getPathosByMeridien($meridien);
-		var_dump($table);
+		//var_dump($table);
 		return $table;
 
 	}
@@ -66,23 +66,31 @@ class Fiche
 		$xml->appendChild($xslt);
 		
 	//Ajoute des elements 
-		//Ajout de l'element racine
-		$patho = $xml->createElement('pathologie');
-		//Element Description
-		$desc = $xml->createElement('description',$table[0]['Description']);
-		$patho->appendChild($desc);
-		
-		$meridien = $xml->createElement('meridien',$table[0]['Meridien']);
-		$patho->appendChild($meridien);
-		
-		$sympts = $xml->createElement('symptomes');
-			foreach($table as $sympt){
-				$sympt = $xml->createElement('symptome',$sympt['Symptome']);
-				$sympts->appendChild($sympt);
-			}
-		$patho->appendChild($sympts);
-		
-		$xml->appendChild($patho);
+		$pathos = $xml->createElement('pathologies');
+			foreach($table as $tablePatho){
+				//Ajout de l'element racine
+				$patho = $xml->createElement('pathologie');
+				//Element Description
+				$desc = $xml->createElement('description',$tablePatho['Description']);
+				$patho->appendChild($desc);
+				
+				$meridien = $xml->createElement('meridien',$tablePatho['Meridien']);
+				$patho->appendChild($meridien);
+				
+				$sympts = $xml->createElement('symptomes');
+				
+				//var_dump($tablePatho);
+				
+					foreach($tablePatho['Symptome'] as $cle => $tableSympt){
+						$sympt = $xml->createElement('symptome',$tableSympt);
+						$sympts->appendChild($sympt);
+					}
+				$patho->appendChild($sympts);
+				$pathos->appendChild($patho);
+			}	
+			
+			$xml->appendChild($pathos);
+			
 		$xml->save('patho'.$table[0]['idP'].'.xml');
 		header('Location: ../patho'.$table[0]['idP'].'.xml');
 		exit();
