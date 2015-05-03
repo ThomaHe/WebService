@@ -45,5 +45,15 @@
 			return $donnees;
 	    }
 		
- 
+		public function getListPatho(){
+			try {
+				$requete = $this->bdd
+				->query('SELECT p.desc,p.type FROM patho p;');
+
+			} catch(PDOException $ex) {
+				echo "An Error occured!"; //user friendly message
+			}
+			$listPathos = $requete->fetchAll(PDO::FETCH_ASSOC);
+			return $listPathos;
+	    }
 	}	
