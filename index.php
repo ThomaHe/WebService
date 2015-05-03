@@ -20,7 +20,7 @@
 	else if (isset($_GET['section']) && $_GET['section'] == 'meridien'){
 		$table = $vue->getPathosByMeridien($_GET['meridien']);
 		//var_dump($table);
-		$vue->generateXMLMultiples($table);
+		$vue->generateXMLMultiples($table,$_GET['meridien']);
 	}
 	
 	else{

@@ -48,7 +48,7 @@ class Fiche
 		//var_dump($table);
 	}
 
-	public function generateXMLMultiples($table)
+	public function generateXMLMultiples($table,$nom)
 	{
 	//création d'un nouveau document
 		$xml = new DOMDocument( "1.0", "UTF-8" );
@@ -91,8 +91,8 @@ class Fiche
 			
 			$xml->appendChild($pathos);
 			
-		$xml->save('patho'.$table[0]['idP'].'.xml');
-		header('Location: ../patho'.$table[0]['idP'].'.xml');
+		$xml->save('patho'.$nom.'.xml');
+		header('Location: ../patho'.$nom.'.xml');
 		exit();
 	}
 	
